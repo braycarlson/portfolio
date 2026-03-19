@@ -2,6 +2,8 @@ export interface ExperienceEntry {
     date: string;
     title: string;
     org: string;
+    url?: string;
+    location: string;
     points: string[];
 }
 
@@ -9,7 +11,9 @@ export const experience: ExperienceEntry[] = [
     {
         date: 'Oct 2025 – Present',
         title: 'Technical Lead',
-        org: 'Stratus Advanced Technologies, Lethbridge, AB',
+        org: 'Stratus Advanced Technologies',
+        url: 'https://stratusadv.com/',
+        location: 'Lethbridge, AB',
         points: [
             'Lead the development department in partnership with fellow Technical Lead, establishing engineering practices and directing technology decisions that drive company growth.',
             'Direct ETL pipeline development and architecture for BC Government\'s Archaeology branch modernization, migrating legacy infrastructure to a modern Django/Arches, Vue.js, PostgreSQL, and ElasticSearch stack.',
@@ -20,7 +24,9 @@ export const experience: ExperienceEntry[] = [
     {
         date: 'Jun 2024 – Oct 2025',
         title: 'Intermediate Software Developer',
-        org: 'Stratus Advanced Technologies, Lethbridge, AB',
+        org: 'Stratus Advanced Technologies',
+        url: 'https://stratusadv.com/',
+        location: 'Lethbridge, AB',
         points: [
             'Developed internal tooling and standardized development practices, generating an estimated $50,000 in annual savings through reduced development time and eliminated redundant processes.',
             'Consolidated and migrated data from four separate MySQL databases into a unified SAP database using Python and pandas, preserving data integrity while maintaining business continuity.',
@@ -31,7 +37,9 @@ export const experience: ExperienceEntry[] = [
     {
         date: 'May 2023 – May 2024',
         title: 'Research Assistant, Tata Lab',
-        org: 'University of Lethbridge, Lethbridge, AB',
+        org: 'University of Lethbridge',
+        url: 'https://www.tatalab.ca/',
+        location: 'Lethbridge, AB',
         points: [
             'Conducted research on source separation in complex acoustic environments, developing algorithms to isolate individual audio sources from overlapping signals.',
             'Developed neural network models for speech-to-text and phoneme classification on isolated audio signals, determining optimal architectures and training configurations.',
@@ -42,7 +50,9 @@ export const experience: ExperienceEntry[] = [
     {
         date: 'Jan 2022 – Jun 2023',
         title: 'Acoustic Analysis in Python, The Birdsong Lab',
-        org: 'University of Lethbridge, Lethbridge, AB',
+        org: 'University of Lethbridge',
+        url: 'https://david-logue.squarespace.com/',
+        location: 'Lethbridge, AB',
         points: [
             'Designed and built a GUI for a dynamic thresholding segmentation algorithm to include or exclude animal vocalizations based on configurable parameters.',
             'Implemented a pipeline to analyze, filter, and segment 1,100 Adelaide\'s warbler songs into individual notes.',

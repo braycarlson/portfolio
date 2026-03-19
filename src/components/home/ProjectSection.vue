@@ -21,6 +21,8 @@
             </div>
 
             <template v-else>
+                <span class="projects-label">Pinned</span>
+
                 <div class="projects-featured">
                     <ProjectCard
                         v-for="repo in featured"
@@ -33,6 +35,8 @@
                 </div>
 
                 <div class="projects-divider" />
+
+                <span class="projects-label">All</span>
 
                 <div class="projects-grid">
                     <ProjectCard
@@ -125,6 +129,15 @@ const {
 <style scoped>
 .projects-lead {
     margin-bottom: 72px;
+}
+
+.projects-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
 }
 
 .projects-loading {

@@ -10,7 +10,14 @@
                 <div class="edu-top">
                     <div>
                         <h3 class="edu-degree">Bachelor of Science, Computer Science</h3>
-                        <p class="edu-school">University of Lethbridge</p>
+                        <p class="edu-school">
+                            <a
+                                href="https://www.ulethbridge.ca/"
+                                target="_blank"
+                                rel="noopener"
+                                class="edu-school-link"
+                            >University of Lethbridge</a>
+                        </p>
                     </div>
                     <span class="edu-date">2020 – 2024</span>
                 </div>
@@ -25,7 +32,12 @@
                     </div>
                     <div class="edu-detail">
                         <span class="edu-detail-key">Thesis</span>
-                        <span class="edu-detail-val">Honours Thesis</span>
+                        <a
+                            href="https://github.com/braycarlson/thesis"
+                            target="_blank"
+                            rel="noopener"
+                            class="edu-detail-val edu-detail-link"
+                        >Honours Thesis</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +45,14 @@
                 <div class="edu-top">
                     <div>
                         <h3 class="edu-degree">Diploma, Digital Media and IT</h3>
-                        <p class="edu-school">Northern Alberta Institute of Technology</p>
+                        <p class="edu-school">
+                            <a
+                                href="https://www.nait.ca/nait/home"
+                                target="_blank"
+                                rel="noopener"
+                                class="edu-school-link"
+                            >Northern Alberta Institute of Technology</a>
+                        </p>
                     </div>
                     <span class="edu-date">2015 – 2017</span>
                 </div>
@@ -104,6 +123,34 @@ const { element, visible } = useScrollReveal();
 .edu-detail-val {
     font-size: 16px;
     font-weight: 600;
+    color: #f5f5f7;
+}
+
+.edu-detail-link {
+    text-decoration: none;
+    background-image: linear-gradient(#f5f5f7, #f5f5f7);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease;
+}
+
+.edu-detail-link:hover {
+    background-size: 100% 1px;
+}
+
+.edu-school-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    background-image: linear-gradient(#f5f5f7, #f5f5f7);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease, color 0.3s ease;
+}
+
+.edu-school-link:hover {
+    background-size: 100% 1px;
     color: #f5f5f7;
 }
 

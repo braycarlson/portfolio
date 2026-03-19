@@ -15,7 +15,17 @@
                     <div class="exp-top">
                         <div>
                             <h3 class="exp-role">{{ job.title }}</h3>
-                            <p class="exp-org">{{ job.org }}</p>
+                            <p class="exp-org">
+                                <a
+                                    v-if="job.url"
+                                    :href="job.url"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="exp-org-link"
+                                >{{ job.org }}</a>
+                                <span v-else>{{ job.org }}</span>,
+                                {{ job.location }}
+                            </p>
                         </div>
                         <span class="exp-date">{{ job.date }}</span>
                     </div>
@@ -73,6 +83,21 @@ const { element, visible } = useScrollReveal();
     font-weight: 500;
     color: var(--text-secondary);
     margin: 0;
+}
+
+.exp-org-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    background-image: linear-gradient(#f5f5f7, #f5f5f7);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease, color 0.3s ease;
+}
+
+.exp-org-link:hover {
+    background-size: 100% 1px;
+    color: #f5f5f7;
 }
 
 .exp-date {

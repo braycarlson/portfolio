@@ -2,7 +2,7 @@
     <nav class="nav" :class="{ scrolled }">
         <div class="nav-inner">
             <router-link to="/" class="nav-logo">
-                BC
+                Brayden Carlson
             </router-link>
             <div class="nav-sep" />
             <router-link
@@ -75,13 +75,14 @@ const links = [
 }
 
 .nav-logo {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: #f5f5f7;
     text-decoration: none;
     padding: 6px 14px;
     border-radius: 6px;
+    white-space: nowrap;
 }
 
 .nav-sep {

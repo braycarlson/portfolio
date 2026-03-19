@@ -21,7 +21,12 @@
                     <div class="hero-subtitle">
                         <span>Technical Lead</span>
                         <span class="hero-subtitle-dot" />
-                        <span>Stratus Advanced Technologies</span>
+                        <a
+                            href="https://stratusadv.com/"
+                            target="_blank"
+                            rel="noopener"
+                            class="hero-subtitle-link"
+                        >Stratus Advanced Technologies</a>
                     </div>
 
                     <div class="hero-stats">
@@ -229,6 +234,21 @@ onMounted(() => {
     height: 4px;
     border-radius: 50%;
     background: rgba(245, 245, 247, 0.12);
+}
+
+.hero-subtitle-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    background-image: linear-gradient(#f5f5f7, #f5f5f7);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease, color 0.3s ease;
+}
+
+.hero-subtitle-link:hover {
+    background-size: 100% 1px;
+    color: #f5f5f7;
 }
 
 .hero-stats {
