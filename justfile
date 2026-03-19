@@ -105,6 +105,11 @@ fly-secrets:
     {{clear}}
     bash deploy.sh secrets
 
+# Allocate IPs, set Cloudflare DNS, and add Fly certs.
+fly-domain:
+    {{clear}}
+    bash deploy.sh domain
+
 # Show Fly.io app status.
 fly-status:
     {{clear}}
