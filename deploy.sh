@@ -343,6 +343,7 @@ step_domain() {
 
     cf_upsert_record "A"    "$DOMAIN"        "$ipv4" false
     cf_upsert_record "AAAA" "$DOMAIN"        "$ipv6" false
+    cf_delete_record "CNAME" "www.${DOMAIN}"
     cf_upsert_record "A"    "www.${DOMAIN}"  "$ipv4" false
     cf_upsert_record "AAAA" "www.${DOMAIN}"  "$ipv6" false
 
