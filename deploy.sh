@@ -274,6 +274,7 @@ case "${1:-}" in
         step_create_app
         step_set_secrets
         step_deploy
+        step_ci
         echo
         green "Setup complete."
         echo
