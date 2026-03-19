@@ -68,9 +68,10 @@ export function useProjectList(): {
 
     function navigate(direction: number): void {
         const next = activeIndex.value + direction;
+        const repo = all.value[next];
 
-        if (next >= 0 && next < all.value.length) {
-            active.value = all.value[next];
+        if (next >= 0 && next < all.value.length && repo) {
+            active.value = repo;
         }
     }
 

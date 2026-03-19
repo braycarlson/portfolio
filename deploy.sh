@@ -18,6 +18,8 @@ set -euo pipefail
 
 # Git Bash on Windows doesn't inherit the Windows PATH entry for fly.
 # Resolve fly.exe when running under WSL.
+# Git Bash on Windows doesn't inherit the Windows PATH entry for fly.
+# Resolve fly.exe when running under WSL.
 if ! command -v fly &>/dev/null && ! command -v fly.exe &>/dev/null; then
     for dir in /mnt/c/Users/*/.fly/bin; do
         if [ -x "$dir/fly.exe" ]; then
@@ -44,7 +46,7 @@ if ! command -v gh &>/dev/null && command -v gh.exe &>/dev/null; then
     export -f gh
 fi
 
-APP_NAME="portfolio"
+APP_NAME="braydencarlson"
 REGION="yyz"
 ENV_FILE=".env.prod"
 

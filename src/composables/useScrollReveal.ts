@@ -20,7 +20,10 @@ export function useScrollReveal(
         if (!element.value) return;
 
         observer = new IntersectionObserver(
-            ([entry]) => {
+            (entries) => {
+                const entry = entries[0];
+                if (!entry) return;
+
                 if (entry.isIntersecting) {
                     visible.value = true;
 
