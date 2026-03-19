@@ -5,14 +5,14 @@
                 <div class="resume-downloads">
                     <button
                         class="btn btn-primary resume-download"
-                        @click="download('/resume.pdf', 'resume_of_brayden_carlson.pdf')"
+                        @click="download('/resume_of_brayden_carlson.pdf', 'resume_of_brayden_carlson.pdf')"
                     >
                         <IconDownload />
                         Resume
                     </button>
                     <button
                         class="btn btn-ghost resume-download"
-                        @click="download('/cv.pdf', 'cv_of_brayden_carlson.pdf')"
+                        @click="download('/cv_of_brayden_carlson.pdf', 'cv_of_brayden_carlson.pdf')"
                     >
                         <IconDownload />
                         CV
@@ -35,14 +35,20 @@ import SkillGrid from '@/components/resume/SkillGrid.vue';
 import IconDownload from '@/components/shared/icons/IconDownload.vue';
 import { assert } from '@/utils/assert';
 
-function download(href: string, filename: string): void {
+async function download(href: string, filename: string): Promise<void> {
     assert(href.length > 0, 'download received an empty href');
     assert(filename.length > 0, 'download received an empty filename');
 
+    const response = await fetch(href);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+
     const anchor = document.createElement('a');
-    anchor.href = href;
+    anchor.href = url;
     anchor.download = filename;
     anchor.click();
+
+    URL.revokeObjectURL(url);
 }
 </script>
 
