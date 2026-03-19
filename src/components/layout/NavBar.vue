@@ -62,7 +62,7 @@ const links = [
 }
 
 .nav.scrolled {
-    background: rgba(8, 8, 11, 0.8);
+    background: rgba(8, 8, 11, 0.92);
     backdrop-filter: blur(16px) saturate(1.4);
     -webkit-backdrop-filter: blur(16px) saturate(1.4);
     border-bottom-color: rgba(245, 245, 247, 0.06);
