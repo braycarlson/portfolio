@@ -1,0 +1,33 @@
+services:
+  api:
+    container_name: portfolio-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    environment:
+      PORT: "8080"
+      SPOTIFY_CLIENT_ID: "${SPOTIFY_CLIENT_ID:-}"
+      SPOTIFY_CLIENT_SECRET: "${SPOTIFY_CLIENT_SECRET:-}"
+      SPOTIFY_REFRESH_TOKEN: "${SPOTIFY_REFRESH_TOKEN:-}"
+      CORS_ORIGIN: "http://localhost:5173"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app
+    restart: unless-stopped
+
+  app:
+    container_name: portfolio-app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      VITE_SPOTIFY_API_URL: "http://localhost:8080/api/spotify/now-playing"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.ts:/app/vite.config.ts
+    restart: unless-stopped
