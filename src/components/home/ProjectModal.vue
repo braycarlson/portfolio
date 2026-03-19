@@ -124,9 +124,9 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 1px solid rgba(245, 245, 247, 0.06);
-    background: rgba(255, 255, 255, 0.02);
-    color: rgba(245, 245, 247, 0.28);
+    border: 1px solid rgba(245, 245, 247, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(245, 245, 247, 0.5);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -137,7 +137,8 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
 }
 
 .modal-nav:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(245, 245, 247, 0.25);
     color: #f5f5f7;
 }
 
@@ -152,7 +153,6 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     border-radius: 24px;
     background: #0d0d12;
     border: 1px solid rgba(245, 245, 247, 0.12);
-    box-shadow: 0 48px 140px rgba(0, 0, 0, 0.5);
     padding: 44px;
     cursor: default;
 }

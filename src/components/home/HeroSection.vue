@@ -140,22 +140,31 @@ onMounted(() => {
 }
 
 .hero-avatar {
+    width: 148px;
+    height: 148px;
     margin-bottom: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(245, 245, 247, 0.06);
     cursor: pointer;
+    transition: border-color 0.4s ease;
+}
+
+.hero-avatar:hover {
+    border-color: rgba(245, 245, 247, 0.12);
 }
 
 .hero-avatar img {
-    width: 148px;
-    height: 148px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 1px solid rgba(245, 245, 247, 0.06);
-    transition: brightness 0.4s ease, border-color 0.4s ease;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    transition: filter 0.4s ease;
 }
 
 .hero-avatar:hover img {
     filter: brightness(1.15);
-    border-color: rgba(245, 245, 247, 0.12);
 }
 
 .avatar-expanded {
