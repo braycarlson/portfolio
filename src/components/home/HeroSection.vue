@@ -173,7 +173,6 @@ onMounted(() => {
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid rgba(245, 245, 247, 0.08);
-    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
 }
 
 .avatar-expanded img {

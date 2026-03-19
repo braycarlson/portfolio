@@ -8,7 +8,7 @@
             <IconArrowLeft />
         </button>
 
-        <div v-if="repo" class="modal-card">
+        <div class="modal-card">
             <button class="modal-close" @click="$emit('close')">&times;</button>
 
             <div class="modal-header">
@@ -229,8 +229,10 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     padding: 18px 0;
+    height: 64px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(245, 245, 247, 0.06);
@@ -240,12 +242,14 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     font-family: "Inter", sans-serif;
     font-size: 20px;
     font-weight: 600;
+    line-height: 1.2;
     color: #f5f5f7;
 }
 
 .modal-stat-label {
     font-size: 11px;
     font-weight: 500;
+    line-height: 1.2;
     color: var(--text-tertiary);
 }
 
@@ -282,9 +286,11 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
 .modal-footer-cell {
     flex: 1;
     padding: 14px 0;
+    height: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     background: rgba(255, 255, 255, 0.02);
 }
@@ -296,12 +302,14 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
 .modal-footer-label {
     font-size: 11px;
     font-weight: 500;
+    line-height: 1.2;
     color: var(--text-tertiary);
 }
 
 .modal-footer-value {
     font-size: 14px;
     font-weight: 600;
+    line-height: 1.2;
     color: var(--text-secondary);
 }
 
@@ -329,29 +337,6 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
 .modal-github-btn:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(245, 245, 247, 0.2);
-}
-
-.modal-enter-active,
-.modal-leave-active {
-    transition: opacity 0.2s ease;
-}
-
-.modal-enter-active .modal-card,
-.modal-leave-active .modal-card {
-    transition: transform 0.2s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-    opacity: 0;
-}
-
-.modal-enter-from .modal-card {
-    transform: scale(0.96) translateY(10px);
-}
-
-.modal-leave-to .modal-card {
-    transform: scale(0.98) translateY(4px);
 }
 
 @media (max-width: 600px) {
@@ -429,5 +414,58 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     .modal-nav {
         display: none;
     }
+}
+</style>
+
+<style>
+.modal-enter-active {
+    transition: opacity 0.4s ease;
+}
+
+.modal-enter-active .modal-card {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease;
+}
+
+.modal-enter-active .modal-nav {
+    transition: opacity 0.4s ease 0.15s;
+}
+
+.modal-leave-active {
+    transition: opacity 0.2s ease;
+}
+
+.modal-leave-active .modal-card {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.modal-leave-active .modal-nav {
+    transition: opacity 0.15s ease;
+}
+
+.modal-enter-from {
+    opacity: 0;
+}
+
+.modal-enter-from .modal-card {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.modal-enter-from .modal-nav {
+    opacity: 0;
+}
+
+.modal-leave-to {
+    opacity: 0;
+}
+
+.modal-leave-to .modal-card {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.modal-leave-to .modal-nav {
+    opacity: 0;
 }
 </style>

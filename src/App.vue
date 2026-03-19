@@ -6,7 +6,11 @@
     </div>
     <NavBar />
     <router-view v-slot="{ Component }">
-        <transition name="page-fade" mode="out-in">
+        <transition
+            name="page-fade"
+            mode="out-in"
+            @before-enter="scrollToTop"
+        >
             <component :is="Component" />
         </transition>
     </router-view>
@@ -23,6 +27,10 @@ import { useAmbientCanvas } from '@/composables/useAmbientCanvas';
 
 const ambient = ref<HTMLCanvasElement | null>(null);
 useAmbientCanvas(ambient);
+
+function scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+}
 </script>
 
 <style>

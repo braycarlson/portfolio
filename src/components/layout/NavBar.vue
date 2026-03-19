@@ -19,11 +19,26 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useScrollState } from '@/composables/useScrollState';
 
 const route = useRoute();
-const { scrolled } = useScrollState();
+const { scrolled: isScrolled } = useScrollState();
+const scrolled = ref(false);
+let timeout: ReturnType<typeof setTimeout> | null = null;
+
+watch(isScrolled, (value) => {
+    if (timeout) clearTimeout(timeout);
+
+    if (value) {
+        scrolled.value = true;
+    } else {
+        timeout = setTimeout(() => {
+            scrolled.value = false;
+        }, 300);
+    }
+});
 
 const links = [
     { to: '/', name: 'home', text: 'Home' },
