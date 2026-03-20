@@ -1,25 +1,31 @@
 <template>
     <div>
-        <div class="resume-header">
-            <div class="resume-header-inner">
-                <div class="resume-downloads">
-                    <button
-                        class="btn btn-primary resume-download"
-                        @click="download('/resume_of_brayden_carlson.pdf', 'resume_of_brayden_carlson.pdf')"
-                    >
-                        <IconDownload />
-                        Resume
-                    </button>
-                    <button
-                        class="btn btn-ghost resume-download"
-                        @click="download('/cv_of_brayden_carlson.pdf', 'cv_of_brayden_carlson.pdf')"
-                    >
-                        <IconDownload />
-                        CV
-                    </button>
+        <section
+            ref="element"
+            class="section-shell section-shell--flush-bottom resume-header-shell"
+            :class="{ visible }"
+        >
+            <div class="section-shell-inner section-shell-inner--narrow section-reveal-inner">
+                <div class="resume-header-inner">
+                    <div class="resume-downloads">
+                        <button
+                            class="btn btn-primary resume-download"
+                            @click="download('/resume_of_brayden_carlson.pdf', 'resume_of_brayden_carlson.pdf')"
+                        >
+                            <IconDownload />
+                            Resume
+                        </button>
+                        <button
+                            class="btn btn-ghost resume-download"
+                            @click="download('/cv_of_brayden_carlson.pdf', 'cv_of_brayden_carlson.pdf')"
+                        >
+                            <IconDownload />
+                            CV
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
         <ExperienceTimeline />
         <SkillGrid />
         <EducationCard />
@@ -33,7 +39,10 @@ import ExperienceTimeline from '@/components/resume/ExperienceTimeline.vue';
 import PublicationList from '@/components/resume/PublicationList.vue';
 import SkillGrid from '@/components/resume/SkillGrid.vue';
 import IconDownload from '@/components/shared/icons/IconDownload.vue';
+import { useScrollReveal } from '@/composables/useScrollReveal';
 import { assert } from '@/utils/assert';
+
+const { element, visible } = useScrollReveal();
 
 async function download(href: string, filename: string): Promise<void> {
     assert(href.length > 0, 'download received an empty href');
@@ -53,15 +62,11 @@ async function download(href: string, filename: string): Promise<void> {
 </script>
 
 <style scoped>
-.resume-header {
-    position: relative;
-    z-index: 1;
-    padding: 8rem 48px 0;
+.resume-header-shell {
+    padding-top: 8rem;
 }
 
 .resume-header-inner {
-    max-width: 1000px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -83,8 +88,8 @@ async function download(href: string, filename: string): Promise<void> {
 }
 
 @media (max-width: 640px) {
-    .resume-header {
-        padding: 8rem 32px 0;
+    .resume-header-shell {
+        padding-top: 8rem;
     }
 
     .resume-header-inner {

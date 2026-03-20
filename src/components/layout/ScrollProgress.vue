@@ -1,13 +1,42 @@
 <template>
     <div class="scroll-progress">
-        <div class="scroll-progress-bar" :style="{ transform: `scaleX(${progress})` }" />
+        <div ref="bar" class="scroll-progress-bar" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { useScrollState } from '@/composables/useScrollState';
+import { onMounted, onUnmounted, ref } from 'vue';
 
-const { progress } = useScrollState();
+const bar = ref<HTMLElement | null>(null);
+
+let ticking = false;
+
+function update(): void {
+    const element = bar.value;
+    if (!element) return;
+
+    const scrollable = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = scrollable > 0 ? document.documentElement.scrollTop / scrollable : 0;
+
+    element.style.transform = `scaleX(${progress})`;
+    ticking = false;
+}
+
+function onScroll(): void {
+    if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll);
+});
 </script>
 
 <style scoped>
@@ -26,13 +55,12 @@ const { progress } = useScrollState();
     height: 100%;
     background: rgba(245, 245, 247, 0.25);
     transform-origin: left;
-    will-change: transform;
-    transition: transform 0.1s linear;
+    transform: scaleX(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
     .scroll-progress-bar {
-        transition: none;
+        display: none;
     }
 }
 </style>

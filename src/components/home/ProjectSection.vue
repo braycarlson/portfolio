@@ -52,7 +52,7 @@
                     <button
                         class="page-btn"
                         :disabled="currentPage === 1"
-                        @click="currentPage--"
+                        @pointerdown.prevent="currentPage > 1 && currentPage--"
                     >
                         &larr;
                     </button>
@@ -62,14 +62,14 @@
                         class="page-btn"
                         :class="{ 'page-btn-active': pageNumber === currentPage, 'page-btn-ellipsis': pageNumber < 0 }"
                         :disabled="pageNumber < 0"
-                        @click="pageNumber > 0 && (currentPage = pageNumber)"
+                        @pointerdown.prevent="pageNumber > 0 && (currentPage = pageNumber)"
                     >
                         {{ pageNumber > 0 ? pageNumber : '...' }}
                     </button>
                     <button
                         class="page-btn"
                         :disabled="currentPage === totalPages"
-                        @click="currentPage++"
+                        @pointerdown.prevent="currentPage < totalPages && currentPage++"
                     >
                         &rarr;
                     </button>
@@ -187,8 +187,10 @@ const {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 200px 200px;
+    grid-auto-rows: 200px;
+    min-height: calc(2 * 200px + 1 * 6px);
     gap: 6px;
+    overflow-anchor: none;
 }
 
 .projects-pagination {
@@ -213,6 +215,9 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .page-btn:hover:not(:disabled) {
@@ -280,6 +285,8 @@ const {
 
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        min-height: calc(3 * 200px + 2 * 6px);
     }
 }
 
@@ -291,7 +298,8 @@ const {
 
     .projects-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+        grid-auto-rows: 200px;
+        min-height: calc(6 * 200px + 5 * 6px);
     }
 }
 

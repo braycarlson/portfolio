@@ -72,27 +72,4 @@ const open = ref(false);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.cat-modal-enter-active,
-.cat-modal-leave-active {
-    transition: opacity 0.25s ease;
-}
-
-.cat-modal-enter-active .cat-photo,
-.cat-modal-leave-active .cat-photo {
-    transition: transform 0.25s ease;
-}
-
-.cat-modal-enter-from,
-.cat-modal-leave-to {
-    opacity: 0;
-}
-
-.cat-modal-enter-from .cat-photo {
-    transform: scale(0.9);
-}
-
-.cat-modal-leave-to .cat-photo {
-    transform: scale(0.95);
-}
 </style>

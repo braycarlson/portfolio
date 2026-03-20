@@ -78,6 +78,13 @@ func newSpotifyClient(cfg config) *spotifyClient {
 	}
 }
 
+func (s *spotifyClient) invalidateToken() {
+	s.token.mu.Lock()
+	s.token.access = ""
+	s.token.expires = time.Time{}
+	s.token.mu.Unlock()
+}
+
 func (s *spotifyClient) handleNowPlaying(
 	writer http.ResponseWriter,
 	request *http.Request,
@@ -190,19 +197,20 @@ func (s *spotifyClient) accessToken(
 	return s.token.access, nil
 }
 
-func (s *spotifyClient) currentlyPlaying(
+func (s *spotifyClient) spotifyGet(
 	ctx context.Context,
 	access string,
-) (*NowPlayingResponse, error) {
+	endpoint string,
+) (*http.Response, error) {
 	request, err := http.NewRequestWithContext(
 		ctx,
 		http.MethodGet,
-		"https://api.spotify.com/v1/me/player/currently-playing",
+		endpoint,
 		nil,
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("building currently-playing request: %w", err)
+		return nil, fmt.Errorf("building request for %s: %w", endpoint, err)
 	}
 
 	request.Header.Set("Authorization", "Bearer "+access)
@@ -210,7 +218,30 @@ func (s *spotifyClient) currentlyPlaying(
 	response, err := s.client.Do(request)
 
 	if err != nil {
-		return nil, fmt.Errorf("executing currently-playing request: %w", err)
+		return nil, fmt.Errorf("executing request for %s: %w", endpoint, err)
+	}
+
+	if response.StatusCode == http.StatusUnauthorized {
+		response.Body.Close()
+		s.invalidateToken()
+		return nil, fmt.Errorf("spotify returned 401 for %s", endpoint)
+	}
+
+	return response, nil
+}
+
+func (s *spotifyClient) currentlyPlaying(
+	ctx context.Context,
+	access string,
+) (*NowPlayingResponse, error) {
+	response, err := s.spotifyGet(
+		ctx,
+		access,
+		"https://api.spotify.com/v1/me/player/currently-playing",
+	)
+
+	if err != nil {
+		return nil, err
 	}
 
 	defer response.Body.Close()
@@ -261,23 +292,14 @@ func (s *spotifyClient) recentlyPlayed(
 	ctx context.Context,
 	access string,
 ) (*NowPlayingResponse, error) {
-	request, err := http.NewRequestWithContext(
+	response, err := s.spotifyGet(
 		ctx,
-		http.MethodGet,
+		access,
 		"https://api.spotify.com/v1/me/player/recently-played?limit=1",
-		nil,
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("building recently-played request: %w", err)
-	}
-
-	request.Header.Set("Authorization", "Bearer "+access)
-
-	response, err := s.client.Do(request)
-
-	if err != nil {
-		return nil, fmt.Errorf("executing recently-played request: %w", err)
+		return nil, err
 	}
 
 	defer response.Body.Close()

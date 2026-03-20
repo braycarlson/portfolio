@@ -31,15 +31,15 @@
 
                     <div class="hero-stats">
                         <div class="hero-stat-tile">
-                            <span class="hero-stat-num">{{ !loading ? repos : '—' }}+</span>
+                            <span class="hero-stat-num">{{ !loading ? repos : '-' }}{{ !loading ? '+' : '' }}</span>
                             <span class="hero-stat-label">projects</span>
                         </div>
                         <div class="hero-stat-tile">
-                            <span class="hero-stat-num">{{ !loading ? stars : '—' }}+</span>
+                            <span class="hero-stat-num">{{ !loading ? stars : '-' }}{{ !loading ? '+' : '' }}</span>
                             <span class="hero-stat-label">stars</span>
                         </div>
                         <div class="hero-stat-tile">
-                            <span class="hero-stat-num">{{ !loading ? forks : '—' }}+</span>
+                            <span class="hero-stat-num">{{ !loading ? forks : '-' }}{{ !loading ? '+' : '' }}</span>
                             <span class="hero-stat-label">forks</span>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
-import portrait from '@/assets/images/portrait.png';
+import portrait from '@/assets/images/brayden.png';
 import BaseModal from '@/components/shared/BaseModal.vue';
 import { useAppReady } from '@/composables/useAppReady';
 import { useCountUp } from '@/composables/useCountUp';
@@ -184,29 +184,6 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.avatar-modal-enter-active,
-.avatar-modal-leave-active {
-    transition: opacity 0.25s ease;
-}
-
-.avatar-modal-enter-active .avatar-expanded,
-.avatar-modal-leave-active .avatar-expanded {
-    transition: transform 0.25s ease;
-}
-
-.avatar-modal-enter-from,
-.avatar-modal-leave-to {
-    opacity: 0;
-}
-
-.avatar-modal-enter-from .avatar-expanded {
-    transform: scale(0.8);
-}
-
-.avatar-modal-leave-to .avatar-expanded {
-    transform: scale(0.9);
 }
 
 .hero-heading {

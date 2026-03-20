@@ -168,7 +168,7 @@
 <script setup lang="ts">
 import CatName from '@/components/shared/CatName.vue';
 import mamas from '@/assets/images/mamas.jpg';
-import ellie from '@/assets/images/ellie.png';
+import ellie from '@/assets/images/ellie.jpg';
 import { useScrollReveal } from '@/composables/useScrollReveal';
 import { useSpotify } from '@/composables/useSpotify';
 

@@ -154,6 +154,7 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     border: 1px solid rgba(245, 245, 247, 0.12);
     padding: 44px;
     cursor: default;
+    touch-action: none;
 }
 
 .modal-close {
@@ -272,6 +273,8 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.06) transparent;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .modal-footer-meta {
@@ -406,66 +409,14 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     .modal-close {
         top: 12px;
         right: 12px;
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+        border-radius: 12px;
     }
 
     .modal-nav {
         display: none;
     }
-}
-</style>
-
-<style>
-.modal-enter-active {
-    transition: opacity 0.4s ease;
-}
-
-.modal-enter-active .modal-card {
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.4s ease;
-}
-
-.modal-enter-active .modal-nav {
-    transition: opacity 0.4s ease 0.15s;
-}
-
-.modal-leave-active {
-    transition: opacity 0.2s ease;
-}
-
-.modal-leave-active .modal-card {
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.modal-leave-active .modal-nav {
-    transition: opacity 0.15s ease;
-}
-
-.modal-enter-from {
-    opacity: 0;
-}
-
-.modal-enter-from .modal-card {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.modal-enter-from .modal-nav {
-    opacity: 0;
-}
-
-.modal-leave-to {
-    opacity: 0;
-}
-
-.modal-leave-to .modal-card {
-    opacity: 0;
-    transform: translateY(8px);
-}
-
-.modal-leave-to .modal-nav {
-    opacity: 0;
 }
 </style>

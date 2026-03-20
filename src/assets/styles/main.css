@@ -76,6 +76,11 @@
     --text-tertiary: rgba(245, 245, 247, 0.28);
 }
 
+html,
+body {
+    overscroll-behavior: none;
+}
+
 html {
     font-size: 16px;
     scroll-behavior: auto;
