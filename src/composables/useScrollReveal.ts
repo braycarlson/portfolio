@@ -1,5 +1,8 @@
 import { ref, onMounted, onUnmounted, type Ref } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 import { assert } from '@/utils/assert';
+
+const MOBILE_BREAKPOINT = '(max-width: 768px)';
 
 export function useScrollReveal(
     margin = '-150px',
@@ -14,9 +17,16 @@ export function useScrollReveal(
     const element = ref<Element | null>(null);
     const visible = ref(false);
     const settled = ref(false);
+    const isMobile = useMediaQuery(MOBILE_BREAKPOINT);
     let observer: IntersectionObserver | null = null;
 
     onMounted(() => {
+        if (isMobile.value) {
+            visible.value = true;
+            settled.value = true;
+            return;
+        }
+
         if (!element.value) return;
 
         observer = new IntersectionObserver(
