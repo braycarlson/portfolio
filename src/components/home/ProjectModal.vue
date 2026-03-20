@@ -374,7 +374,7 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     }
 
     .modal-stat-num {
-        font-size: 15px;
+        font-size: 11px;
     }
 
     .modal-story {
