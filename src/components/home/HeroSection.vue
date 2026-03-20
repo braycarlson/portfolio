@@ -7,12 +7,12 @@
             <div class="hero-reveal">
                 <div class="hero-card">
                     <div class="hero-avatar" @click="avatarOpen = !avatarOpen">
-                        <img :src="portrait" alt="" />
+                        <img :src="portraitSmall" alt="" />
                     </div>
 
                     <BaseModal :open="avatarOpen" transition="avatar-modal" @close="avatarOpen = false">
                         <div class="avatar-expanded">
-                            <img :src="portrait" alt="" />
+                            <img :src="portraitLarge" alt="" />
                         </div>
                     </BaseModal>
 
@@ -60,7 +60,8 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
-import portrait from '@/assets/images/brayden.png';
+import portraitSmall from '@/assets/images/brayden_avatar.jpg';
+import portraitLarge from '@/assets/images/brayden_portrait.jpg';
 import BaseModal from '@/components/shared/BaseModal.vue';
 import { useAppReady } from '@/composables/useAppReady';
 import { useCountUp } from '@/composables/useCountUp';
@@ -164,7 +165,8 @@ onMounted(() => {
     height: 100%;
     object-fit: cover;
     display: block;
-    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+    -ms-interpolation-mode: bicubic;
     transition: filter 0.4s ease;
 }
 

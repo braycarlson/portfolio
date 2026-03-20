@@ -1,4 +1,5 @@
 import { ref, readonly } from 'vue';
+import portraitUrl from '@/assets/images/brayden_avatar.jpg';
 
 const ready = ref(false);
 
@@ -16,7 +17,14 @@ async function initialize(): Promise<void> {
 
     const fonts = document.fonts.ready;
 
-    await Promise.all([minimum, fonts]);
+    const portrait = new Promise<void>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+        img.src = portraitUrl;
+    });
+
+    await Promise.all([minimum, fonts, portrait]);
 
     ready.value = true;
 }

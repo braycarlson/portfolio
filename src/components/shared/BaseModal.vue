@@ -1,6 +1,6 @@
 <template>
     <Teleport to="body">
-        <Transition :name="transition">
+        <Transition :name="transition" @after-leave="unlock">
             <div
                 v-if="open"
                 role="dialog"
@@ -28,22 +28,26 @@ const emit = defineEmits<{
     close: [];
 }>();
 
+function lock(): void {
+    document.documentElement.classList.add('scroll-locked');
+}
+
+function unlock(): void {
+    document.documentElement.classList.remove('scroll-locked');
+}
+
 useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     if (props.open && event.key === 'Escape') {
         emit('close');
     }
 });
 
-watch(() => props.open, (locked) => {
-    if (locked) {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
-    }
-    document.body.classList.toggle('body-scroll-locked', locked);
-}, { immediate: true });
+watch(() => props.open, (value) => {
+    if (value) lock();
+});
 
 onUnmounted(() => {
-    document.body.classList.remove('body-scroll-locked');
+    unlock();
 });
 </script>
 
