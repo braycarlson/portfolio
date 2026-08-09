@@ -8,8 +8,8 @@
         <div class="section-shell-inner section-shell-inner--wide section-reveal-inner">
             <div class="about-panel">
                 <h2 class="section-lead about-heading">
-                    I transform your worst workflow<br class="heading-break" />
-                    into your favorite tool.
+                    I turn the workflow you dread<br class="heading-break" />
+                    into the tool you love.
                 </h2>
                 <div class="about-body">
                     <p class="body-text">
@@ -64,12 +64,6 @@
                         <div class="about-sidebar-row">
                             <span class="about-sidebar-key">Exploring</span>
                             <span class="about-sidebar-val">
-                                <a
-                                    href="https://elixir-lang.org/"
-                                    target="_blank"
-                                    rel="noopener"
-                                    class="about-sidebar-link"
-                                >Elixir</a>,
                                 <a
                                     href="https://ziglang.org"
                                     target="_blank"
