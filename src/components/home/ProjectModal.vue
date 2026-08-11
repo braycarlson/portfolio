@@ -8,7 +8,7 @@
             <IconArrowLeft />
         </button>
 
-        <div class="modal-card">
+        <div v-if="repo" class="modal-card">
             <button class="modal-close" @click="$emit('close')">&times;</button>
 
             <div class="modal-header">
