@@ -1,0 +1,34 @@
+# Without this file `COPY . .` copies the host `node_modules` over the one the
+# image just installed, and ships `.git` and secrets into the build context.
+
+.git
+.github
+.idea
+.vscode
+
+node_modules
+**/node_modules
+
+dist
+dist-ssr
+coverage
+server/tmp
+
+*.log
+logs
+.eslintcache
+*.tsbuildinfo
+
+.env
+.env.*
+*.local
+
+Dockerfile
+Dockerfile.dev
+**/Dockerfile.dev
+.dockerignore
+docker-compose.yml
+deploy.sh
+justfile
+README.md
+LICENSE

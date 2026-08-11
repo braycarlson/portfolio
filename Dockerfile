@@ -1,9 +1,16 @@
 ARG GO_IMAGE="golang:1.26-bookworm"
+ARG NODE_IMAGE="node:24-trixie-slim"
 ARG RUNNER_IMAGE="debian:bookworm-slim"
+
+# --- Node runtime source ---
+
+FROM ${NODE_IMAGE} AS node
 
 # --- UI build stage ---
 
 FROM oven/bun:1 AS ui
+
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
 
 WORKDIR /app
 

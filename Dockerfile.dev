@@ -1,5 +1,7 @@
 FROM oven/bun:1
 
+COPY --from=node:24-trixie-slim /usr/local/bin/node /usr/local/bin/node
+
 WORKDIR /app
 
 COPY package.json bun.lock* bun.lockb* ./
