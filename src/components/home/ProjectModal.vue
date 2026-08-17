@@ -12,9 +12,14 @@
             <button class="modal-close" @click="$emit('close')">&times;</button>
 
             <div class="modal-header">
-                <div class="modal-lang" :style="{ color: langColor(repo.language) }">
-                    <span class="modal-lang-dot" :style="{ background: langColor(repo.language) }" />
-                    {{ repo.language || 'Unknown' }}
+                <div class="modal-tags">
+                    <div class="modal-lang" :style="{ color: langColor(repo.language) }">
+                        <span class="modal-lang-dot" :style="{ background: langColor(repo.language) }" />
+                        {{ repo.language || 'Unknown' }}
+                    </div>
+                    <span v-if="repo.archived" class="modal-archived">
+                        Archived
+                    </span>
                 </div>
                 <h2 class="modal-name">{{ repo.name }}</h2>
                 <p class="modal-desc">{{ repo.description || 'No description provided.' }}</p>
@@ -183,13 +188,31 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
     margin-bottom: 28px;
 }
 
+.modal-tags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
 .modal-lang {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 16px;
+}
+
+.modal-archived {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(245, 245, 247, 0.12);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-tertiary);
 }
 
 .modal-lang-dot {

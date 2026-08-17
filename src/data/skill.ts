@@ -13,8 +13,9 @@ export const skills: SkillGroup[] = [
         category: 'Languages',
         items: [
             { name: 'Python', url: 'https://www.python.org' },
-            { name: 'Go', url: 'https://go.dev' },
+            { name: 'Zig', url: 'https://ziglang.org' },
             { name: 'Rust', url: 'https://www.rust-lang.org' },
+            { name: 'Go', url: 'https://go.dev' },
             { name: 'C++', url: 'https://isocpp.org' },
         ],
     },

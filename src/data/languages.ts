@@ -12,6 +12,7 @@ const LANG_COLORS: Record<string, string> = {
     'Python': '#3572a5',
     'Rust': '#dea584',
     'TypeScript': '#3178c6',
+    'Vue': '#41b883',
     'Zig': '#ec915c',
 };
 

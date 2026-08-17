@@ -2,28 +2,57 @@ export interface ProjectMeta {
     story?: string;
 }
 
-export const PINNED = ['swarm', 'forgecast', 'nimble', 'mute'];
+export const PINNED = ['nimble', 'mute', 'tigerstyle-lsp', 'resolve'];
 
-export const HIDDEN = ['braycarlson', 'dotfiles', 'braycarlson.github.io', 'avgn_paper'];
+export const HIDDEN = ['braycarlson', 'dotfiles', 'avgn_paper'];
 
 export const SORT_ORDER = [
-    'swarm',
-    'forgecast',
     'nimble',
     'mute',
+    'tigerstyle-lsp',
+    'resolve',
+    'swarm',
+    'forgecast',
     'alphares',
-    'thesis',
-    'warbler',
-    'locker',
-    'undertasker',
+    'kaleidoscope',
+    'abyss',
+    'rift',
     'wisp',
+    'locker',
+    'phantom',
+    'prototype',
+    'kalymma',
+    'mantra',
+    'arc',
     'zig_wca',
-    'avs',
+    'zig_vda',
+    'gfdi',
+    'zfit',
+    'zgarmin',
+    'undertasker',
     'senna',
+    'asol',
+    'slapshot',
+    'swarm_extension',
+    'resolve-lint-action',
+    'warbler',
+    'avs',
+    'thesis',
     'cachecontrol',
+    'portfolio',
+    'dimensionality',
+    'dasc',
+    'hrtf',
     'viking',
     'composer',
     'pioneer',
+    'bockbluster',
+    'memory',
+    'aoc',
+    'pathofduplicates',
+    'dbgen',
+    'forknife',
+    'console',
 ];
 
 export const PROJECT_META: Record<string, ProjectMeta> = {

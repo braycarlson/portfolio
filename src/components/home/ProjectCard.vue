@@ -42,6 +42,9 @@
                     <IconFork />
                     {{ repo.forks_count }}
                 </span>
+                <span v-if="repo.archived" class="project-archived">
+                    Archived
+                </span>
             </div>
         </div>
     </div>
@@ -237,5 +240,17 @@ defineEmits<{
 
 .project-stat .icon {
     font-size: 14px;
+}
+
+.project-archived {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(245, 245, 247, 0.12);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-tertiary);
 }
 </style>

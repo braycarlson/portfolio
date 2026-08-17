@@ -1,4 +1,5 @@
 export interface Repo {
+    archived: boolean;
     created_at: string;
     description: string | null;
     fork: boolean;

@@ -81,8 +81,8 @@
                         <div class="about-sidebar-row">
                             <span class="about-sidebar-key">Building</span>
                             <span class="about-sidebar-val">
-                                <button class="about-sidebar-link about-sidebar-btn" @click="$emit('navigateProject', 'swarm')">swarm</button>,
-                                <button class="about-sidebar-link about-sidebar-btn" @click="$emit('navigateProject', 'forgecast')">Forgecast</button>
+                                <button class="about-sidebar-link about-sidebar-btn" @click="$emit('navigateProject', 'tigerstyle-lsp')">tigerstyle-lsp</button>,
+                                <button class="about-sidebar-link about-sidebar-btn" @click="$emit('navigateProject', 'scylla')">scylla</button>
                             </span>
                         </div>
                         <div class="about-sidebar-row">
