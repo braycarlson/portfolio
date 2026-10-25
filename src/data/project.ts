@@ -2,21 +2,21 @@ export interface ProjectMeta {
     story?: string;
 }
 
-export const PINNED = ['nimble', 'mute', 'tigerstyle-lsp', 'resolve'];
+export const PINNED = ['scylla', 'tigerstyle-lsp', 'celeste', 'nimble'];
 
 export const HIDDEN = ['braycarlson', 'dotfiles', 'avgn_paper'];
 
 export const SORT_ORDER = [
+    'scylla',
+    'tigerstyle-lsp',
+    'celeste',
     'nimble',
     'mute',
-    'tigerstyle-lsp',
     'resolve',
     'swarm',
     'forgecast',
     'alphares',
     'kaleidoscope',
-    'celeste',
-    'scylla',
     'docmux',
     'abyss',
     'rift',
